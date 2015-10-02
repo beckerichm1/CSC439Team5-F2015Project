@@ -18,7 +18,7 @@ public class Proxy
 	private CacheToFile cacheToFile;
 	
 	private String directory;
-	private boolean windows;
+	private boolean osWindows;
 	private int sleepSeconds;
 	
 	public Proxy(String inDirectory, int maxCacheSize, int sleepSeconds)
@@ -36,14 +36,14 @@ public class Proxy
 		
 		// Determine which way slashes go for directories.
 		String os = System.getProperty("os.name").toLowerCase();
-		windows=(os.indexOf( "win" ) >= 0); 
+		osWindows=(os.indexOf( "win" ) >= 0); 
 
 		this.directory=inDirectory;
-		if (windows && ! directory.endsWith("\\"))
+		if (osWindows && ! directory.endsWith("\\"))
 		{
 			directory=directory+"\\";
 		}
-		if (! windows && ! directory.endsWith("/"))
+		if (! osWindows && ! directory.endsWith("/"))
 		{
 			directory=directory+"/";
 		}
