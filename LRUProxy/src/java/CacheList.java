@@ -29,7 +29,7 @@ public class CacheList
 {
 	//Edited by Matthew Beckerich
 	private CacheLog log; // not used yet
-	private LinkedList<String> linkedList;
+	private LinkedList<String> cacheList;
 	private int maxSize;
 
 	/**
@@ -41,7 +41,7 @@ public class CacheList
 	public CacheList(String directory, int maxsize)
 	{
 		log = new CacheLog(directory);
-		linkedList=new LinkedList<String>();
+		cacheList=new LinkedList<String>();
 		if (maxsize<1)
 		{
 			this.maxSize=1;
@@ -69,20 +69,20 @@ public class CacheList
 		
 		if (hit)
 		{
-			linkedList.remove(URL);
+			cacheList.remove(URL);
 		}
 		
 		
 		// If size is MAXSIZE, remove last link
-		if (linkedList.size()==maxSize)
+		if (cacheList.size()>=maxSize)
 		{
-			removedURL=(String)linkedList.getLast();
+			removedURL=(String)cacheList.getLast();
 			log.logRemoval(removedURL);
-			linkedList.removeLast();
+			cacheList.removeLast();
 		}
 
 		// Newest is always the first.
-		linkedList.addFirst(URL);
+		cacheList.addFirst(URL);
 		
 		//System.out.println("Added "+URL);
 		
@@ -98,7 +98,7 @@ public class CacheList
 	 */
 	public int getCacheSize()
 	{
-		return linkedList.size();
+		return cacheList.size();
 	}
 	
 	/**
@@ -110,9 +110,9 @@ public class CacheList
 	public String getHead()
 	{
 		String returnedURL="";
-		if (linkedList.size()>0)
+		if (cacheList.size()>0)
 		{
-			returnedURL=linkedList.getFirst().toString();
+			returnedURL=cacheList.getFirst().toString();
 		}
 		return returnedURL;
 	}
@@ -127,9 +127,9 @@ public class CacheList
 	public String get(int i)
 	{
 		String returnedURL="";
-		if (i<linkedList.size())
+		if (i<cacheList.size())
 		{
-			returnedURL=linkedList.get(i).toString();
+			returnedURL=cacheList.get(i).toString();
 		}
 		return returnedURL;
 	}
@@ -141,11 +141,23 @@ public class CacheList
 	 */
 	public void traverseTest()
 	{
-		for (int i=0; i<linkedList.size();i++)
+		for (int i=0; i<cacheList.size();i++)
 		{
-			System.out.print(linkedList.get(i)+" => ");
+			System.out.print(cacheList.get(i)+" => ");
 		}
 		System.out.println("NULL");
 	}
 	
+	
+	public int getMaxSize(){
+		return maxSize;
+	}
+	
+	public LinkedList<String> getCacheList(){
+		return cacheList;
+	}
+	
+	public CacheLog getCacheLog(){
+		return log;
+	}
 }

@@ -1,6 +1,5 @@
 package java;
 
-
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -123,6 +122,6 @@ public class CacheToFile
 	 */
 	private String generateFilename(String url)
 	{
-		return url.replaceAll("/", ".");
+		return url.replaceAll("/", "_");
 	}
 }

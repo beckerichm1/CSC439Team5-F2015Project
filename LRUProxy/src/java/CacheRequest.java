@@ -1,5 +1,7 @@
 package java;
+
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 
 /**
@@ -28,6 +30,7 @@ public class CacheRequest
 			e.printStackTrace();
 		}
 	}
+	
 	
 	/**
 	 * read

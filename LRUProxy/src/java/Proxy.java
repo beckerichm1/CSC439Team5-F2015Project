@@ -1,4 +1,4 @@
-package java;
+package Test;
 import java.io.File;
 
 
@@ -9,7 +9,7 @@ import java.io.File;
  *
  * This is the class that can be executed.
  */
-public class Proxy 
+public class Proxy extends Thread 
 {	
 	private CacheLog cacheLog;
 	private CacheRequest cacheRequest;
@@ -17,9 +17,9 @@ public class Proxy
 	private MiniHttp miniHttp;
 	private CacheToFile cacheToFile;
 	
-	private String directory;
-	private boolean osWindows;
-	private int sleepSeconds;
+	protected String directory;
+	private boolean isWindows;
+	protected int sleepSeconds;
 	
 	public Proxy(String inDirectory, int maxCacheSize, int sleepSeconds)
 	{
@@ -36,14 +36,14 @@ public class Proxy
 		
 		// Determine which way slashes go for directories.
 		String os = System.getProperty("os.name").toLowerCase();
-		osWindows=(os.indexOf( "win" ) >= 0); 
+		isWindows=(os.indexOf( "win" ) >= 0); 
 
 		this.directory=inDirectory;
-		if (osWindows && ! directory.endsWith("\\"))
+		if (isWindows && ! directory.endsWith("\\"))
 		{
 			directory=directory+"\\";
 		}
-		if (! osWindows && ! directory.endsWith("/"))
+		if (! isWindows && ! directory.endsWith("/"))
 		{
 			directory=directory+"/";
 		}
@@ -169,8 +169,9 @@ public class Proxy
 	}
 	
 	public static void main(String args[])
-	{
-		if (args.length!=3)
+	{ 	
+
+		if (args.length == 3)
 		{
 			try
 			{

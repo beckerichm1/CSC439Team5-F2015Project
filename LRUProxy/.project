@@ -14,4 +14,21 @@
 	<natures>
 		<nature>org.eclipse.jdt.core.javanature</nature>
 	</natures>
+	<linkedResources>
+		<link>
+			<name>lib/commons-logging-1.1.1.jar</name>
+			<type>1</type>
+			<locationURI>PARENT-3-PROJECT_LOC/Downloads/eclipse/commons-logging-1.1.1.jar</locationURI>
+		</link>
+		<link>
+			<name>lib/httpclient-4.1.1.jar</name>
+			<type>1</type>
+			<locationURI>PARENT-3-PROJECT_LOC/Downloads/eclipse/httpclient-4.1.1.jar</locationURI>
+		</link>
+		<link>
+			<name>lib/httpcore-4.1.jar</name>
+			<type>1</type>
+			<locationURI>PARENT-3-PROJECT_LOC/Downloads/eclipse/httpcore-4.1.jar</locationURI>
+		</link>
+	</linkedResources>
 </projectDescription>
