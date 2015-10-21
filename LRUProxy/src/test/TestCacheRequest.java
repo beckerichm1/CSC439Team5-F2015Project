@@ -1,42 +1,23 @@
-package java;
-
+package test;
 import static org.junit.Assert.*;
 
-import org.junit.Test;
+import java.CacheRequest;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.util.*;
+import org.junit.*;
 
-public class TestCacheRequest {
+public class testCacheRequest {
+	String directory = "C:\\Users\\catfa_000\\workspace\\LRUProxy(1)\\LRUProxy\\src\\java\\";
+	CacheRequest request = new CacheRequest(directory);
+
 	@Test
-	public void testConstructor() throws FileNotFoundException{
-		CacheRequest c = new CacheRequest("C:\\Users\\Alan\\workspace\\");
-		assertNotNull(c);
+	public void testRead(){
+	    String expected = "www.google.com";
+	    assertEquals(expected, request.read());
+	    
 	}
 	
 	@Test
-	public void testRead(){
-		CacheRequest c = new CacheRequest("C:\\Users\\Alan\\Documents\\");
-		StringBuffer sb = new StringBuffer("");
-		sb.append("www.google.com");
-		sb.append("www.yahoo.com");
-		sb.append("www.wikipedia.com");
-		sb.append("www.google.com");
-		sb.append("www.yahoo.com");
-		sb.append("www.ask.com");
-		sb.append("www.apple.com");
-		sb.append("www.google.com");
-		sb.append("www.apple.com");
-		sb.append("www.yahoo.com");
-		sb.append("www.apple.com");
-		sb.append("www.msn.com");
-		sb.append("www.apple.com");
-		sb.append("www.msn.com");
-		sb.append("www.apple.com");
-		sb.append("www.google.com");
-		String test = "";
-		test = test + c.read();
-		assertEquals(test, sb);
+	public void iMadeThisUp(){
+		
 	}
 }
