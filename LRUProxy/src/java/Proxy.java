@@ -53,11 +53,11 @@ public class Proxy extends Thread
 			try
 			{
 			
-				cacheLog = new CacheLog(directory);
-				cacheRequest= new CacheRequest(directory);
-				cacheList = new CacheList(directory, maxCacheSize);
-				cacheToFile = new CacheToFile(directory);
-				miniHttp=new MiniHttp();
+				cacheLog = new java.CacheLog(directory);
+				cacheRequest= new java.CacheRequest(directory);
+				cacheList = new java.CacheList(directory, maxCacheSize);
+				cacheToFile = new java.CacheToFile(directory);
+				miniHttp=new java.MiniHttp();
 			
 			}
 			catch (Exception e)
