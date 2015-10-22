@@ -11,11 +11,11 @@ import java.io.File;
  */
 public class Proxy extends Thread 
 {	
-	private CacheLog cacheLog;
-	private CacheRequest cacheRequest;
-	private CacheList cacheList;
-	private MiniHttp miniHttp;
-	private CacheToFile cacheToFile;
+	private java.CacheLog cacheLog;
+	private java.CacheRequest cacheRequest;
+	private java.CacheList cacheList;
+	private java.MiniHttp miniHttp;
+	private java.CacheToFile cacheToFile;
 	
 	protected String directory;
 	private boolean isWindows;
