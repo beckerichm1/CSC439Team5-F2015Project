@@ -33,8 +33,8 @@ public class ProxyTest {
 	
 	@Test
 	public void constructorTest(){
-		String dirname = "C:\\Users\\Matthew\\Desktop\\ServerTesting\\";
-		server.Proxy p = new server.Proxy(dirname, -1,-1);
+		String dirname = "C:\\LRUProxyChange\\LRUProxy\\co\\LRUProxy\\data\\";
+		java.Proxy p = new java.Proxy(dirname, -1,-1);
 		assertEquals(p.directory, dirname);
 		assertEquals(p.sleepSeconds, 0);
 		

@@ -22,7 +22,7 @@ public class MiniHttpTest {
 	@Test
 	public void testConstructor(){
 		
-		MiniHttp mh = new MiniHttp();
+		java.MiniHttp mh = new java.MiniHttp();
 		
 		assertEquals( new DefaultHttpClient(), mh.httpclient );
 		assertEquals( null , mh.in );
