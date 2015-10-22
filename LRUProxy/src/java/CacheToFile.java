@@ -101,6 +101,36 @@ public class CacheToFile
 		}
 
 	}
+	
+	public String readString(String url)
+	{
+		String line = "";
+		try
+		{
+			String cachedFile=generateFilename(url);
+			String filename=directory+cachedFile;
+			BufferedReader in = new BufferedReader(new FileReader(filename));
+			
+			// Where to send this?
+			OutputStreamWriter ostream;
+			ostream = new OutputStreamWriter(System.out);
+			
+			line=in.readLine();
+			while(line!=null)
+			{
+				ostream.write(line);
+				line=in.readLine();
+			}
+			
+			ostream.close();
+			in.close();
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+		return line;
+	}
 	/**
 	 * Used for testing
 	 * @param cachedURL - URL to check
@@ -123,5 +153,9 @@ public class CacheToFile
 	private String generateFilename(String url)
 	{
 		return url.replaceAll("/", "_");
+	}
+	
+	public String getDirectory(){
+		return directory;
 	}
 }

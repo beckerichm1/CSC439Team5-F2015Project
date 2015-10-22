@@ -22,8 +22,8 @@ import org.apache.http.impl.client.DefaultHttpClient;
  */
 public class MiniHttp 
 {
-	 HttpClient httpclient;
-	 BufferedReader in;
+	 public HttpClient httpclient;
+	 public BufferedReader in;
     
 	public MiniHttp()
 	{

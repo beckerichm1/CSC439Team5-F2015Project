@@ -17,9 +17,9 @@ public class Proxy extends Thread
 	private java.MiniHttp miniHttp;
 	private java.CacheToFile cacheToFile;
 	
-	protected String directory;
+	public String directory;
 	private boolean isWindows;
-	protected int sleepSeconds;
+	public int sleepSeconds;
 	
 	public Proxy(String inDirectory, int maxCacheSize, int sleepSeconds)
 	{
