@@ -12,7 +12,7 @@ public class CacheLogTest{
 	
 	@Test
 	public void testOpenLogForAppend() throws IOException{
-		CacheLog c = new CacheLog("C:\\Users\\Alan\\workspace\\");
+		java.CacheLog c = new java.CacheLog("./data/");
 		assertNotNull(c.getOut());
 	}
 

@@ -2,13 +2,12 @@ package test;
 
 import static org.junit.Assert.*;
 
-import java.CacheRequest;
 
 import org.junit.*;
 
 public class CacheRequestTest {
 	String directory = "./data/";
-	CacheRequest request = new CacheRequest(directory);
+	java.CacheRequest request = new java.CacheRequest(directory);
 
 	@Test
 	public void testRead(){
