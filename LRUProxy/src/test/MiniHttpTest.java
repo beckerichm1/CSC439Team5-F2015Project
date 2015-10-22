@@ -2,7 +2,7 @@ package test;
 
 import static org.junit.Assert.*;
 
-import java.MiniHttp;
+
 import java.util.LinkedList;
 
 import org.junit.*;
