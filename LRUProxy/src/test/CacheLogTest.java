@@ -4,7 +4,6 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import java.CacheLog;
 import java.io.IOException;
 import java.util.*;
 
@@ -18,21 +17,21 @@ public class CacheLogTest{
 
 	@Test
 	public void testLogRemoval(){
-		CacheLog c = new CacheLog("C:\\Users\\Alan\\workspace\\");
+		java.CacheLog c = new java.CacheLog("./data/");
 		String test = c.removeString("http://nku.edu/~foxr");
 		assertNotSame(c.removeString("http://nku.edu/~foxr"), test);
 	}
 	
 	@Test
 	public void testLogHit(){
-		CacheLog c = new CacheLog("C:\\Users\\Alan\\workspace\\");
+		java.CacheLog c = new java.CacheLog("./data/");
 		String test = c.hitString("http://nku.edu/~foxr");
 		assertNotSame(c.hitString("http://nku.edu/~foxr"), test);
 	}
 	
 	@Test
 	public void testLogMiss(){
-		CacheLog c = new CacheLog("C:\\Users\\Alan\\workspace\\");
+		java.CacheLog c = new java.CacheLog("./data/");
 		String test = c.missString("http://nku.edu/~foxr");
 		assertNotSame(c.missString("http://nku.edu/~foxr"), test);
 	}
