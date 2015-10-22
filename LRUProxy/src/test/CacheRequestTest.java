@@ -1,12 +1,13 @@
 package test;
+
 import static org.junit.Assert.*;
 
 import java.CacheRequest;
 
 import org.junit.*;
 
-public class testCacheRequest {
-	String directory = "C:\\Users\\catfa_000\\workspace\\LRUProxy(1)\\LRUProxy\\src\\java\\";
+public class CacheRequestTest {
+	String directory = "./data/";
 	CacheRequest request = new CacheRequest(directory);
 
 	@Test
@@ -14,10 +15,5 @@ public class testCacheRequest {
 	    String expected = "www.google.com";
 	    assertEquals(expected, request.read());
 	    
-	}
-	
-	@Test
-	public void iMadeThisUp(){
-		
 	}
 }
