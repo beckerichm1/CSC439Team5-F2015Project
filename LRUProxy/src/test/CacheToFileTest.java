@@ -16,16 +16,16 @@ public class CacheToFileTest {
 	
 	@Test
 	public void testCacheToFileConstructor(){
-		String dirName = "C:/LRUProxyChange/LRUProxy/co/LRUProxy/data/";
+		String dirName = "./data/";
 		java.CacheToFile ctf = new java.CacheToFile(dirName);
 		
 		assertEquals(dirName, ctf.getDirectory());
 		
-		dirName = "C:\\LRUProxyChange\\LRUProxy\\co\\LRUProxy\\data\\";
+		dirName = "./data/";
 		ctf = new java.CacheToFile(dirName);
 		assertEquals(dirName, ctf.getDirectory());
 		
-		dirName = "/usr/seed/Desktop/tempLoc/";
+		dirName = "./";
 		ctf = new java.CacheToFile(dirName);
 		assertEquals(dirName, ctf.getDirectory());
 		
@@ -37,7 +37,7 @@ public class CacheToFileTest {
 	
 	@Test 
 	public void testCTFwrite(){
-		String dirName = "C:\\LRUProxyChange\\LRUProxy\\co\\LRUProxy\\data\\";
+		String dirName = "./data/";
 		java.CacheToFile ctf = new java.CacheToFile(dirName);
 		
 		ctf.write("I/Made/This/File.html", new StringBuffer("LALILULELO"));
@@ -68,7 +68,7 @@ public class CacheToFileTest {
 	@Test
 	public void testRemove(){
 		
-		String dirName = "C:\\LRUProxyChange\\LRUProxy\\co\\LRUProxy\\data\\";
+		String dirName = "./data/";
 		java.CacheToFile ctf = new java.CacheToFile(dirName);
 		
 		
@@ -93,7 +93,7 @@ public class CacheToFileTest {
 	
 	@Test
 	public void testExists(){
-		String dirName = "C:\\LRUProxyChange\\LRUProxy\\co\\LRUProxy\\data\\";
+		String dirName = "./data/";
 		java.CacheToFile ctf = new java.CacheToFile(dirName);
 		
 		assertTrue(ctf.isCached("I_Made_This_File.html"));
@@ -105,7 +105,7 @@ public class CacheToFileTest {
 	@Test
 	public void testRead(){
 		
-		String dirName = "C:\\LRUProxyChange\\LRUProxy\\co\\LRUProxy\\data\\";
+		String dirName = "./data/";
 		java.CacheToFile ctf = new java.CacheToFile(dirName);
 		
 		String valueRead = ctf.readString("I_Made_This_File.html");
