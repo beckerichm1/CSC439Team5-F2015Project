@@ -33,7 +33,7 @@ public class MiniHttpTest {
 	public void fetch()
 	{
 		
-		MiniHttp mh = new MiniHttp();
+		java.MiniHttp mh = new java.MiniHttp();
     
 		StringBuffer sb = new StringBuffer("");
 		sb.append( "http://nku.edu/~foxr/home" );
