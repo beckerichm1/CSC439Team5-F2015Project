@@ -22,10 +22,10 @@ public class MiniHttpTest {
 	@Test
 	public void testConstructor(){
 		
-		java.MiniHttp mh = new java.MiniHttp();
+		server.MiniHttp mh = new server.MiniHttp();
 		
 		assertEquals( new DefaultHttpClient(), mh.httpclient );
-		assertEquals( null , mh.in );
+		
 	}
 	
 	
@@ -33,9 +33,9 @@ public class MiniHttpTest {
 	public void fetch()
 	{
 		
-		java.MiniHttp mh = new java.MiniHttp();
+		server.MiniHttp mh = new server.MiniHttp();
     
-		StringBuffer sb = new StringBuffer("");
+		/*StringBuffer sb = new StringBuffer("");
 		sb.append( "http://nku.edu/~foxr/home" );
 		sb.append( "<html><head>" );
 		sb.append( "<title>Home for Richard Fox</title>" );
@@ -63,12 +63,11 @@ public class MiniHttpTest {
 		sb.append( "<center><a href=\"mailto:foxr@nku.edu\"><img src=\"IMAGES/email.gif\" height=\"10%\"></a></center>" );
 		sb.append( "<p><hr><p>" );
 		sb.append( "</body>" );
-		sb.append( "</html>" );
+		sb.append( "</html>" );*/
 		
+		System.out.println(mh.fetch("http://nku.edu/~foxr/home") );
+		assertEquals( sb , mh.fetch("http://nku.edu/~foxr/home") );
 		
-		assertEquals( sb , new StringBuffer( "nku.edu/~foxr/home" ) );
-		
-		assertEquals( sb , new StringBuffer( "http://nku.edu/~foxr/home" ) );		
 		
 		
 	}

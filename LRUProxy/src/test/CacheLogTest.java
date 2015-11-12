@@ -11,27 +11,27 @@ public class CacheLogTest{
 	
 	@Test
 	public void testOpenLogForAppend() throws IOException{
-		java.CacheLog c = new java.CacheLog("./data/");
+		server.CacheLog c = new server.CacheLog("./data/");
 		assertNotNull(c.getOut());
 	}
 
 	@Test
 	public void testLogRemoval(){
-		java.CacheLog c = new java.CacheLog("./data/");
+		server.CacheLog c = new server.CacheLog("./data/");
 		String test = c.removeString("http://nku.edu/~foxr");
 		assertNotSame(c.removeString("http://nku.edu/~foxr"), test);
 	}
 	
 	@Test
 	public void testLogHit(){
-		java.CacheLog c = new java.CacheLog("./data/");
+		server.CacheLog c = new server.CacheLog("./data/");
 		String test = c.hitString("http://nku.edu/~foxr");
 		assertNotSame(c.hitString("http://nku.edu/~foxr"), test);
 	}
 	
 	@Test
 	public void testLogMiss(){
-		java.CacheLog c = new java.CacheLog("./data/");
+		server.CacheLog c = new server.CacheLog("./data/");
 		String test = c.missString("http://nku.edu/~foxr");
 		assertNotSame(c.missString("http://nku.edu/~foxr"), test);
 	}

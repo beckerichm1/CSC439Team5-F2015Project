@@ -10,17 +10,17 @@ public class CacheListTest {
 	@Test
 	public void testConstructor(){
 		
-		java.CacheList cl = new java.CacheList("testing", 10);
+		server.CacheList cl = new server.CacheList("testing", 10);
 		
 		assertEquals(10, cl.getMaxSize());
-		cl = new java.CacheList("testing", -5);
+		cl = new server.CacheList("testing", -5);
 		assertEquals(1, cl.getMaxSize());
 	}
 	
 	
 	@Test
 	public void testGetHead(){
-		java.CacheList cl = new java.CacheList("testing", 3);
+		server.CacheList cl = new server.CacheList("testing", 3);
 		
 		cl.addNewObject("google.com", false);
 		assertEquals("google.com",cl.getHead());
@@ -38,7 +38,7 @@ public class CacheListTest {
 	}
 	@Test
 	public void testAddition(){
-		java.CacheList cl = new java.CacheList("testing", 3);
+		server.CacheList cl = new server.CacheList("testing", 3);
 		cl.addNewObject("google.com", false);
 		cl.addNewObject("facebook.com", false);
 		cl.addNewObject("reddit.com",false);
@@ -63,7 +63,7 @@ public class CacheListTest {
 	
 	@Test
 	public void testGetCacheSize(){
-		java.CacheList cl = new java.CacheList("testing", -1);
+		server.CacheList cl = new server.CacheList("testing", -1);
 		assertEquals(0,cl.getCacheSize());
 		
 		cl.addNewObject("twitter.com", false);
@@ -72,7 +72,7 @@ public class CacheListTest {
 		cl.addNewObject("facebook.com", false);
 		assertEquals(1,cl.getCacheSize());
 		
-		cl = new java.CacheList("testing", 3);
+		cl = new server.CacheList("testing", 3);
 		
 		cl.addNewObject("twitter.com", false);
 		assertEquals(1,cl.getCacheSize());

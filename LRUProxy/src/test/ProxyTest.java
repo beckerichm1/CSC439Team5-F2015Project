@@ -33,12 +33,10 @@ public class ProxyTest {
 	
 	@Test
 	public void constructorTest(){
-		String dirname = "./data/";
-		java.Proxy p = new java.Proxy(dirname, -1,-1);
+		String dirname = ".\\data\\";
+		server.Proxy p = new server.Proxy(dirname, -1,-1);
 		assertEquals(p.directory, dirname);
+		System.out.println(p.sleepSeconds);
 		assertEquals(p.sleepSeconds, 0);
-		
-		
-		
 	}
 }

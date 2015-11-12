@@ -17,20 +17,20 @@ public class CacheToFileTest {
 	@Test
 	public void testCacheToFileConstructor(){
 		String dirName = "./data/";
-		java.CacheToFile ctf = new java.CacheToFile(dirName);
+		server.CacheToFile ctf = new server.CacheToFile(dirName);
 		
 		assertEquals(dirName, ctf.getDirectory());
 		
 		dirName = "./data/";
-		ctf = new java.CacheToFile(dirName);
+		ctf = new server.CacheToFile(dirName);
 		assertEquals(dirName, ctf.getDirectory());
 		
 		dirName = "./";
-		ctf = new java.CacheToFile(dirName);
+		ctf = new server.CacheToFile(dirName);
 		assertEquals(dirName, ctf.getDirectory());
 		
 		dirName = "an invalid path";
-		ctf = new java.CacheToFile(dirName);
+		ctf = new server.CacheToFile(dirName);
 		assertEquals(dirName, ctf.getDirectory());
 	}
 	
@@ -38,7 +38,7 @@ public class CacheToFileTest {
 	@Test 
 	public void testCTFwrite(){
 		String dirName = "./data/";
-		java.CacheToFile ctf = new java.CacheToFile(dirName);
+		server.CacheToFile ctf = new server.CacheToFile(dirName);
 		
 		ctf.write("I/Made/This/File.html", new StringBuffer("LALILULELO"));
 		ctf.write("google.html", new StringBuffer("As if this is actually google"));
@@ -69,7 +69,7 @@ public class CacheToFileTest {
 	public void testRemove(){
 		
 		String dirName = "./data/";
-		java.CacheToFile ctf = new java.CacheToFile(dirName);
+		server.CacheToFile ctf = new server.CacheToFile(dirName);
 		
 		
 		File temp = new File(dirName + "I_Made_This_File.html");
@@ -94,7 +94,7 @@ public class CacheToFileTest {
 	@Test
 	public void testExists(){
 		String dirName = "./data/";
-		java.CacheToFile ctf = new java.CacheToFile(dirName);
+		server.CacheToFile ctf = new server.CacheToFile(dirName);
 		
 		assertTrue(ctf.isCached("I_Made_This_File.html"));
 		assertTrue(ctf.isCached("google.html"));
@@ -106,7 +106,7 @@ public class CacheToFileTest {
 	public void testRead(){
 		
 		String dirName = "./data/";
-		java.CacheToFile ctf = new java.CacheToFile(dirName);
+		server.CacheToFile ctf = new server.CacheToFile(dirName);
 		
 		String valueRead = ctf.readString("I_Made_This_File.html");
 		assertEquals("LALILULELO",valueRead);

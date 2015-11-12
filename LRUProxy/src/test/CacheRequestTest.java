@@ -7,7 +7,7 @@ import org.junit.*;
 
 public class CacheRequestTest {
 	String directory = "./data/";
-	java.CacheRequest request = new java.CacheRequest(directory);
+	server.CacheRequest request = new server.CacheRequest(directory);
 
 	@Test
 	public void testRead(){
