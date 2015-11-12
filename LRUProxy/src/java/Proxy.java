@@ -1,4 +1,4 @@
-package java;
+package server;
 import java.io.File;
 
 
@@ -11,11 +11,11 @@ import java.io.File;
  */
 public class Proxy extends Thread 
 {	
-	private java.CacheLog cacheLog;
-	private java.CacheRequest cacheRequest;
-	private java.CacheList cacheList;
-	private java.MiniHttp miniHttp;
-	private java.CacheToFile cacheToFile;
+	private server.CacheLog cacheLog;
+	private server.CacheRequest cacheRequest;
+	private server.CacheList cacheList;
+	private server.MiniHttp miniHttp;
+	private server.CacheToFile cacheToFile;
 	
 	public String directory;
 	private boolean isWindows;
@@ -53,11 +53,11 @@ public class Proxy extends Thread
 			try
 			{
 			
-				cacheLog = new java.CacheLog(directory);
-				cacheRequest= new java.CacheRequest(directory);
-				cacheList = new java.CacheList(directory, maxCacheSize);
-				cacheToFile = new java.CacheToFile(directory);
-				miniHttp=new java.MiniHttp();
+				cacheLog = new server.CacheLog(directory);
+				cacheRequest= new server.CacheRequest(directory);
+				cacheList = new server.CacheList(directory, maxCacheSize);
+				cacheToFile = new server.CacheToFile(directory);
+				miniHttp=new server.MiniHttp();
 			
 			}
 			catch (Exception e)
