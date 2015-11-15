@@ -36,7 +36,7 @@ public class ProxyTest {
 		String dirname = ".\\data\\";
 		server.Proxy p = new server.Proxy(dirname, -1,-1);
 		assertEquals(p.directory, dirname);
-		System.out.println(p.sleepSeconds);
+		
 		assertEquals(p.sleepSeconds, 0);
 	}
 }
