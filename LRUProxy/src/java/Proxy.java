@@ -11,6 +11,9 @@ import java.io.File;
  */
 public class Proxy extends Thread 
 {	
+	private static final int PORT = 3104;
+	private static ServerSocket socket;
+
 	private server.CacheLog cacheLog;
 	private server.CacheRequest cacheRequest;
 	private server.CacheList cacheList;
@@ -87,13 +90,15 @@ public class Proxy extends Thread
 		// stops.  So, we'll loop through the
 		// file and stop when we reach the end.
 		String url="";
+		serverSocket = new ServerSocket(PORT);
 		do
 		{
 			// Step 1: read request from file.
-			url=cacheRequest.read();
+			Socket socket = serverSocket.accept();
+			url=cacheRequest.read( socket );
 			
 			// If we have one, proceed.
-			if (url.trim().length()>0)
+			if (url != null && url.trim().length()>0)
 			{
 				// Step 2: Check to see if URL is cached
 				//         Log this in the cache log.
@@ -120,15 +125,21 @@ public class Proxy extends Thread
 
 				// Step 4: If hit, send data to output
 				//         If miss, pull data and save it
+				cacheToFile.setOut( socket );
 				if (hit)
 				{
 					// display cached file to System.out
-					cacheToFile.read(url);
+					cacheToFile.read(url, socket);
 				}
 				else
 				{
 					StringBuffer data=miniHttp.fetch(url);
 					cacheToFile.write(url, data);
+					OutputStream ostream = new OutputStream(socket.getOutputStream());
+					
+					ostream.write(data.toString());
+						
+					ostream.close();
 				}
 				
 				// wait a second before next read
@@ -142,7 +153,8 @@ public class Proxy extends Thread
 					e.printStackTrace();
 				}
 			}
-		} while (url.trim().length()>0);
+		//} while (url.trim().length()>0);
+		  } while(true);
 
 	}
 	
@@ -160,7 +172,7 @@ public class Proxy extends Thread
 	private boolean isInputFilePresent()
 	{
 		boolean returnValue=false;
-		File inFile = new File(directory+"input.txt");
+		File inFile = new File(directory+"input.txt"); //input.txt
 		if (inFile.exists())
 		{
 			returnValue=true;

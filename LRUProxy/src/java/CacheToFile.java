@@ -19,6 +19,7 @@ import java.io.OutputStreamWriter;
  */
 public class CacheToFile 
 {
+	PrintWriter out = null;
 	private String directory;
 	
 	/**
@@ -73,7 +74,7 @@ public class CacheToFile
 	 * And writes it to System.out.
 	 * @param url
 	 */
-	public void read(String url)
+	public void read(String url , Socket s )
 	{
 		try
 		{
@@ -83,7 +84,7 @@ public class CacheToFile
 			
 			// Where to send this?
 			OutputStreamWriter ostream;
-			ostream = new OutputStreamWriter(System.out);
+			ostream = new OutputStreamWriter(s.getOutputStream());
 			
 			String line=in.readLine();
 			while(line!=null)
@@ -157,5 +158,10 @@ public class CacheToFile
 	
 	public String getDirectory(){
 		return directory;
+	}
+	
+	public void setOut( Socket s )
+	{
+		out = new PrintWriter( s.getOutputStream(  ) , true )
 	}
 }

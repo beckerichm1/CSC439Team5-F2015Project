@@ -18,9 +18,9 @@ public class CacheRequest
 {
 
 	BufferedReader in;
-	public CacheRequest(String directory)
+	public CacheRequest(String directorys)
 	{
-		String filename=directory+"input.txt";
+		String filename=directory+"input.txt";	//input.txt
 		try
 		{
 			in = new BufferedReader(new FileReader(filename));
@@ -36,21 +36,29 @@ public class CacheRequest
 	 * read
 	 * @return next request or empty string if no request.
 	 */
-	public String read()
+	public String read( Socket s )
 	{
 		String line="";
+		in = new BufferedReader( new InputStreamReader( s.getInputStream() ) );
+		
 		try
 		{
 			line=in.readLine();
 			if (line == null)
 			{
-				line="";
+				return null;
 			}
 		}
 		catch (Exception e)
 		{
 			e.printStackTrace();
+			
 		}
-		return line;
+		String [] pieces = line.split(\\s+);
+		if(!pieces[0].equalsIgnoreCase("GET")){
+			return null;
+		}
+		String url = pieces[1];
+		return url;
 	}
 }
