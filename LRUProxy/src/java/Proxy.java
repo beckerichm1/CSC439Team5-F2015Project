@@ -1,5 +1,8 @@
 package server;
 import java.io.File;
+import java.io.IOException;
+import java.net.ServerSocket;
+import java.net.Socket;
 
 
 /**
@@ -9,16 +12,18 @@ import java.io.File;
  *
  * This is the class that can be executed.
  */
-public class Proxy extends Thread 
+public class Proxy 
 {	
+	
 	private static final int PORT = 3104;
-	private static ServerSocket socket;
+	
+	private static ServerSocket serversocket;
 
-	private server.CacheLog cacheLog;
-	private server.CacheRequest cacheRequest;
-	private server.CacheList cacheList;
-	private server.MiniHttp miniHttp;
-	private server.CacheToFile cacheToFile;
+	public server.CacheLog cacheLog;
+	public server.CacheRequest cacheRequest;
+	public server.CacheList cacheList;
+	public server.MiniHttp miniHttp;
+	public server.CacheToFile cacheToFile;
 	
 	public String directory;
 	private boolean isWindows;
@@ -90,70 +95,27 @@ public class Proxy extends Thread
 		// stops.  So, we'll loop through the
 		// file and stop when we reach the end.
 		String url="";
-		serverSocket = new ServerSocket(PORT);
+		try {
+			serversocket = new ServerSocket(PORT);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		do
 		{
 			// Step 1: read request from file.
-			Socket socket = serverSocket.accept();
-			url=cacheRequest.read( socket );
-			
-			// If we have one, proceed.
-			if (url != null && url.trim().length()>0)
-			{
-				// Step 2: Check to see if URL is cached
-				//         Log this in the cache log.
-				boolean hit=cacheToFile.isCached(url);
-				if (hit)
-				{
-					cacheLog.logHit(url);
-				}
-				else
-				{
-					cacheLog.logMiss(url);
-				}
-
-				// Step 3: Based on hit/miss, add to LRU
-				// cache list.  This logs a message if 
-				// an old cached object is deleted 				
-				String removedURL=cacheList.addNewObject(url, hit);
-				if (removedURL.trim().length()>0)
-				{
-					//webCache.removeCache(removedURL);
-					// physically removed the cached file
-					cacheToFile.remove(removedURL);
-				}
-
-				// Step 4: If hit, send data to output
-				//         If miss, pull data and save it
-				cacheToFile.setOut( socket );
-				if (hit)
-				{
-					// display cached file to System.out
-					cacheToFile.read(url, socket);
-				}
-				else
-				{
-					StringBuffer data=miniHttp.fetch(url);
-					cacheToFile.write(url, data);
-					OutputStream ostream = new OutputStream(socket.getOutputStream());
-					
-					ostream.write(data.toString());
-						
-					ostream.close();
-				}
-				
-				// wait a second before next read
-				// I just use this as a timer mechanism
-				try
-				{
-					Thread.sleep(sleepSeconds * 1000);
-				}
-				catch (Exception e)
-				{
-					e.printStackTrace();
-				}
+			Socket socket = null;
+			try {
+				socket = serversocket.accept();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
-		//} while (url.trim().length()>0);
+			HTTPGetter worker = new HTTPGetter(socket, this);
+			new Thread(worker).start();
+			
+			
+			
 		  } while(true);
 
 	}

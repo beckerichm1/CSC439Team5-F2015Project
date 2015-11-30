@@ -16,16 +16,16 @@ public class CacheToFileTest {
 	
 	@Test
 	public void testCacheToFileConstructor(){
-		String dirName = ".\\data\\";
+		String dirName = ".\\co\\LRUProxy\\data\\";
 		server.CacheToFile ctf = new server.CacheToFile(dirName);
 		
 		assertEquals(dirName, ctf.getDirectory());
 		
-		dirName = ".\\data\\";
+		dirName = ".\\co\\LRUProxy\\data\\";
 		ctf = new server.CacheToFile(dirName);
 		assertEquals(dirName, ctf.getDirectory());
 		
-		dirName = ".\\";
+		dirName = ".\\co\\LRUProxy\\";
 		ctf = new server.CacheToFile(dirName);
 		assertEquals(dirName, ctf.getDirectory());
 		
@@ -39,7 +39,7 @@ public class CacheToFileTest {
 	
 	
 	public void testCTFwrite(){
-		String dirName = ".\\data\\";
+		String dirName = ".\\co\\LRUProxy\\data\\";
 		server.CacheToFile ctf = new server.CacheToFile(dirName);
 		
 		ctf.write("I/Made/This/File.html", new StringBuffer("SUCCESS"));
@@ -70,7 +70,7 @@ public class CacheToFileTest {
 	
 	public void testRemove(){
 		
-		String dirName = ".\\data\\";
+		String dirName = ".\\co\\LRUProxy\\data\\";
 		server.CacheToFile ctf = new server.CacheToFile(dirName);
 		
 		
@@ -96,7 +96,7 @@ public class CacheToFileTest {
 	
 	
 	public void testExists(){
-		String dirName = ".\\data\\";
+		String dirName = ".\\co\\LRUProxy\\data\\";
 		server.CacheToFile ctf = new server.CacheToFile(dirName);
 		
 		assertTrue(ctf.isCached("I_Made_This_File.html"));
@@ -108,7 +108,7 @@ public class CacheToFileTest {
 	
 	public void testRead(){
 		
-		String dirName = ".\\data\\";
+		String dirName = ".\\co\\LRUProxy\\data\\";
 		server.CacheToFile ctf = new server.CacheToFile(dirName);
 		
 		String valueRead = ctf.readString("I_Made_This_File.html");

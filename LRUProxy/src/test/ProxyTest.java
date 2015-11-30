@@ -10,11 +10,10 @@ public class ProxyTest {
 /*	
 	@Test
 	public void inputPresent(){
-		server.Proxy p = new server.Proxy("C:\\Users\\Matthew\\Desktop\\ServerTesting\\", 10,0);
+		server.Proxy p = new server.Proxy(".\\co\\LRUProxy\\data\\", 10,0);
 		
 		assertTrue(p.isInputFilePresent());
-		//p = new server.Proxy("C:\\Users\\Matthew\\Desktop\\", 10,0);
-		//assertFalse(p.isInputFilePresent());
+
 		
 	}
 	*/
@@ -22,18 +21,18 @@ public class ProxyTest {
 	/*
 	@Test
 	public void validDirectory(){
-		server.Proxy p = new server.Proxy("C:\\Users\\Matthew\\Desktop\\ServerTesting\\", 10,0);
+		server.Proxy p = new server.Proxy(".\\co\\LRUProxy\\data\\", 10,0);
 		
 		assertTrue(p.isValidDirectory());
 		
-		p = new server.Proxy("C:\\Users\\Matthew\\Desktop\\ServerTestsakvabaksdbv\\", 10,0);
+		p = new server.Proxy(".\\co\\LRUProxy\\datadoesnotexist\\", 10,0);
 		assertFalse(p.isValidDirectory());
 	}
 	*/
 	
 	@Test
 	public void constructorTest(){
-		String dirname = ".\\data\\";
+		String dirname = ".\\co\\LRUProxy\\data\\";
 		server.Proxy p = new server.Proxy(dirname, -1,-1);
 		assertEquals(p.directory, dirname);
 		

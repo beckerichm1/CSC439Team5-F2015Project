@@ -3,6 +3,9 @@ package server;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.Socket;
 
 /**
  * CacheRequest
@@ -18,7 +21,7 @@ public class CacheRequest
 {
 
 	BufferedReader in;
-	public CacheRequest(String directorys)
+	public CacheRequest(String directory)
 	{
 		String filename=directory+"input.txt";	//input.txt
 		try
@@ -39,7 +42,12 @@ public class CacheRequest
 	public String read( Socket s )
 	{
 		String line="";
-		in = new BufferedReader( new InputStreamReader( s.getInputStream() ) );
+		try {
+			in = new BufferedReader( new InputStreamReader( s.getInputStream() ) );
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		
 		try
 		{
@@ -54,7 +62,7 @@ public class CacheRequest
 			e.printStackTrace();
 			
 		}
-		String [] pieces = line.split(\\s+);
+		String [] pieces = line.split("\\s+");
 		if(!pieces[0].equalsIgnoreCase("GET")){
 			return null;
 		}
