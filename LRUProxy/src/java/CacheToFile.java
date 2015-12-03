@@ -108,6 +108,7 @@ public class CacheToFile
 	
 	public String readString(String url)
 	{
+		StringBuffer sb = new StringBuffer();
 		String line = "";
 		try
 		{
@@ -122,6 +123,7 @@ public class CacheToFile
 			line=in.readLine();
 			while(line!=null)
 			{
+				sb.append(line);
 				ostream.write(line);
 				line=in.readLine();
 			}
@@ -133,7 +135,7 @@ public class CacheToFile
 		{
 			e.printStackTrace();
 		}
-		return line;
+		return sb.toString();
 	}
 	/**
 	 * Used for testing
